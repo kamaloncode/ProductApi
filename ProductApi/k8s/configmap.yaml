@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-api-config
+data:
+  DB_SERVER: sql-server-service
+  DB_NAME: ProductDb

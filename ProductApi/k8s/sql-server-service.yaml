@@ -8,4 +8,4 @@ spec:
     targetPort: 1433
   clusterIP: None
   selector:
-    app: sql-server
+    app: sql-db

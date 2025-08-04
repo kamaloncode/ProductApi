@@ -3,15 +3,16 @@ kind: Ingress
 metadata:
   name: product-api-ingress
   annotations:
-    kubernetes.io/ingress.class: "gce"   # For GKE default ingress controller
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: nginx
   rules:
-  - http:
-      paths:
-      - path: /*
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: product-api-service
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /api/product
+            pathType: Prefix
+            backend:
+              service:
+                name: product-api-service
+                port:
+                  number: 80

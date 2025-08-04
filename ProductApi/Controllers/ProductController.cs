@@ -18,8 +18,15 @@ namespace ProductApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProductData()
         {
-            var products = await _context.Products.ToListAsync();
-            return Ok(products);
+            try
+            {
+                var products = await _context.Products.ToListAsync();
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
